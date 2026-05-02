@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Technique Only, LLC</title>
+  <meta name="description" content="Marcus Alan Cunningham, Col (Ret), USAF. Defense researcher. The origin story of Technique Only, LLC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a18;
+      --paper: #f4f1eb;
+      --field: #2d3b2a;
+      --brass: #b8902a;
+      --rust: #8b3a2a;
+      --fog: #8a8880;
+      --rule: #d4cfc4;
+      --accent: #c4a456;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .wordmark {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .wordmark span { color: var(--brass); }
+
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fog);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--ink); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 10rem 2rem 5rem;
+      background: var(--field);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 39px,
+        rgba(255,255,255,0.04) 39px,
+        rgba(255,255,255,0.04) 40px
+      );
+    }
+
+    .page-header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .page-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--paper);
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: rgba(244,241,235,0.65);
+      line-height: 1.75;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0;
+    }
+
+    .sidebar {
+      padding: 4rem 3rem 4rem 0;
+      border-right: 1px solid var(--rule);
+      position: sticky;
+      top: 64px;
+      height: fit-content;
+    }
+
+    .sidebar-section {
+      margin-bottom: 3rem;
+    }
+
+    .sidebar-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-list {
+      list-style: none;
+    }
+
+    .sidebar-list li {
+      font-size: 0.85rem;
+      color: var(--fog);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.5;
+    }
+
+    .sidebar-list li:last-child { border-bottom: none; }
+
+    .sidebar-nav a {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--fog);
+      text-decoration: none;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.2s;
+    }
+
+    .sidebar-nav a:hover { color: var(--ink); }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article {
+      padding: 4rem 0 4rem 3rem;
+    }
+
+    .article h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      margin-top: 3.5rem;
+      color: var(--ink);
+    }
+
+    .article h2:first-child { margin-top: 0; }
+
+    .article h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .article p {
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    .article blockquote {
+      border-left: 3px solid var(--field);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(45,59,42,0.04);
+    }
+
+    .article blockquote p {
+      font-style: italic;
+      color: var(--field);
+      margin-bottom: 0;
+    }
+
+    .rule-line {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* ─── LOE TABLE ─── */
+    .loe-table {
+      border: 1px solid var(--rule);
+      margin: 2rem 0;
+      width: 100%;
+    }
+
+    .loe-table-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 2fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .loe-table-row:last-child { border-bottom: none; }
+
+    .loe-table-row.header {
+      background: var(--ink);
+    }
+
+    .loe-table-cell {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .loe-table-cell:last-child { border-right: none; }
+
+    .loe-table-row.header .loe-table-cell {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #6ab04c;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ─── PHILOSOPHY BOX ─── */
+    .philosophy-box {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 3rem;
+      margin: 2.5rem 0;
+    }
+
+    .philosophy-box blockquote {
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: rgba(244,241,235,0.85);
+      margin-bottom: 1rem;
+    }
+
+    .philosophy-box cite {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* ─── VOICE BOX ─── */
+    .voice-box {
+      border: 1px solid var(--rule);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .voice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .voice-col h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .voice-col.never h4 { color: var(--rust); }
+    .voice-col.always h4 { color: var(--field); }
+
+    .voice-col ul {
+      list-style: none;
+    }
+
+    .voice-col ul li {
+      font-size: 0.875rem;
+      font-style: italic;
+      padding: 0.3rem 0;
+      color: var(--fog);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(244,241,235,0.4);
+      padding: 3rem 2rem;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: rgba(244,241,235,0.2);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-eyebrow { animation: fadeUp 0.5s ease both; }
+    .page-title { animation: fadeUp 0.5s 0.08s ease both; }
+    .page-subtitle { animation: fadeUp 0.5s 0.16s ease both; }
+
+    @media (max-width: 900px) {
+      .content-wrapper { grid-template-columns: 1fr; }
+      .sidebar { position: static; border-right: none; border-bottom: 1px solid var(--rule); padding: 3rem 0; }
+      .article { padding: 3rem 0; }
+      .voice-row { grid-template-columns: 1fr; gap: 1rem; }
+      .loe-table-row { grid-template-columns: 1fr; }
+      .loe-table-cell { border-right: none; border-bottom: 1px solid var(--rule); }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="/" class="wordmark">Technique Only<span>,&nbsp;LLC</span></a>
+      <nav>
+        <a href="/journeys/">Journeys</a>
+        <a href="/data/">Data</a>
+        <a href="/feeds/">Live Feeds</a>
+        <a href="/about.html" class="active">About</a>
+        <a href="mailto:marcus@techniqueonly.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="page-eyebrow">Field Notes — Who is Writing These</p>
+      <h1 class="page-title">Colonel, retired. <em>Still working.</em></h1>
+      <p class="page-subtitle">The mission statement was always the same. The operational environment changed. Technique Only is what happens when a 20-year documented practice becomes a company.</p>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <p class="sidebar-label">Principal</p>
+        <ul class="sidebar-list">
+          <li>Marcus Alan Cunningham</li>
+          <li>Col (Ret), USAF</li>
+          <li>b. June 27, 1978 — Age 47</li>
+          <li>Medford, NJ</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-label">Military Service</p>
+        <ul class="sidebar-list">
+          <li>C-17 Globemaster III</li>
+          <li>KC-46 Pegasus</li>
+          <li>2,635.3 flight hours</li>
+          <li>VA Disability — 100%</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-label">Current Role</p>
+        <ul class="sidebar-list">
+          <li>Defense Researcher</li>
+          <li>RAND Corporation</li>
+          <li>Single-member LLC, NJ</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-label">On This Site</p>
+        <nav class="sidebar-nav">
+          <a href="#origin">Origin Story</a>
+          <a href="#mission">The Mission</a>
+          <a href="#philosophy">The Philosophy</a>
+          <a href="#loes">Lines of Effort</a>
+          <a href="#voice">The Voice</a>
+          <a href="#reader">The Reader</a>
+        </nav>
+      </div>
+    </aside>
+
+    <article class="article">
+
+      <h2 id="origin">Where this came from</h2>
+      <p>Twenty-six years in the Air Force. C-17s and KC-46s. Deployments, command, staff work, and a body that quietly accumulated the operational cost of all of it. OSA. A 30-pound weight problem that was actually a metabolic problem that was actually a sleep problem. A VA rating at 100% that wasn't a destination — it was a set of constraints to work within.</p>
+      <p>Retirement wasn't a finish line. It was a restructuring of the problem. The question that organized everything after separation: <strong>what physical and professional capability do I owe the people who depend on me?</strong></p>
+      <p>The autistic son. The daughters. The work that continues at RAND. The question has a concrete answer and the answer requires method.</p>
+
+      <h2 id="mission">The operational mission</h2>
+      <p>Maintain physical and cognitive capability to care for a dependent child with complex needs over a decades-long time horizon. This is not a wellness goal. It is a logistics problem with human stakes and a long planning window.</p>
+      <p>Every LOE in this company connects back to this. Human Optimization is the primary operation. Mead, beekeeping, aviation, 3D printing, and poultry are secondary — but they share the same methodology and they all generate documentation. The documentation is the discipline. The discipline is the mission.</p>
+
+      <hr class="rule-line">
+
+      <h2 id="philosophy">The philosophy — Technique as method</h2>
+
+      <p>The name came before the LLC. <em>Technique</em> as a noun rather than a descriptor. Not "good technique" or "proper technique" — just <em>technique</em>: a process, a discipline, a methodology. Applied identically across every domain without regard to outcome.</p>
+
+      <p>You can control the method. You cannot control the result. The method is therefore the only honest thing to document.</p>
+
+      <div class="philosophy-box">
+        <blockquote>
+          "The Buddha, the Godhead, resides quite as comfortably in the circuits of a digital computer or the gears of a cycle transmission as he does at the top of a mountain or in the petals of a flower. To think otherwise is to demean the Buddha — which is to demean oneself."
+        </blockquote>
+        <cite>Robert Pirsig — Zen and the Art of Motorcycle Maintenance</cite>
+      </div>
+
+      <p>This book is the canonical reference not because of what it says about motorcycles but because of what it demonstrates about quality as a practice. The narrator is not teaching you to maintain a motorcycle. He is showing you what happens when someone cares enough about a thing to understand it completely. That is the model.</p>
+
+      <p>The 20-year training log is not a record of results. The Bod Pod scan series is not a progress photo. The fermentation data is not a recipe collection. These are records of a practice. The practice is what's for sale — not the outcomes, which vary, and not the prescriptions, which don't generalize.</p>
+
+      <hr class="rule-line">
+
+      <h2 id="loes">Lines of Effort — a brief inventory</h2>
+
+      <p>Six domains. One methodology. The documentation predates the revenue in every case — that is the IRS structure and also the honest structure. Nothing here was built for content. The content comes from the build.</p>
+
+      <div class="loe-table">
+        <div class="loe-table-row header">
+          <div class="loe-table-cell">LOE</div>
+          <div class="loe-table-cell">Status</div>
+          <div class="loe-table-cell">What it actually is</div>
+        </div>
+        <div class="loe-table-row">
+          <div class="loe-table-cell"><strong>Human Optimization</strong></div>
+          <div class="loe-table-cell"><span class="status-dot"></span>Active</div>
+          <div class="loe-table-cell">Lean bulk phase. 20+ years of logged training. Daily biometrics. Lumen metabolic tracking. Bod Pod scan series. The author is the subject.</div>
+        </div>
+        <div class="loe-table-row">
+          <div class="loe-table-cell"><strong>NJ Dronebuster Mead</strong></div>
+          <div class="loe-table-cell"><span class="status-dot"></span>Active</div>
+          <div class="loe-table-cell">Four batches in production. ~$1,100 R&D spend documented. Amaretto, spice profiles, Egyptian braggot, hard cyser. Path to licensed commercial sales.</div>
+        </div>
+        <div class="loe-table-row">
+          <div class="loe-table-cell"><strong>Beekeeping / Apiary</strong></div>
+          <div class="loe-table-cell"><span class="status-dot"></span>Active</div>
+          <div class="loe-table-cell">Colony transferred to Apimaye April 27, 2026. California-split queen. Active foraging. Blueberry pollen from the Pine Barrens edge. Year 1, Season 1.</div>
+        </div>
+        <div class="loe-table-row">
+          <div class="loe-table-cell"><strong>Aviation</strong></div>
+          <div class="loe-table-cell"><span class="status-dot" style="background:#f39c12;"></span>Review</div>
+          <div class="loe-table-cell">FAA Special Issuance — binder mailed April 20, 2026. OSA resolved (AHI 3.9). 2,635.3 hours. C-17/KC-46. June 17 MRI expiration is the hard deadline.</div>
+        </div>
+        <div class="loe-table-row">
+          <div class="loe-table-cell"><strong>3D Printing</strong></div>
+          <div class="loe-table-cell"><span class="status-dot"></span>Operational</div>
+          <div class="loe-table-cell">Prusa Core One. Manual Transmission in portfolio. Race bib snap system in design. Manufacturing node for cross-LOE applications.</div>
+        </div>
+        <div class="loe-table-row">
+          <div class="loe-table-cell"><strong>Poultry</strong></div>
+          <div class="loe-table-cell"><span class="status-dot" style="background:#f39c12;"></span>Building</div>
+          <div class="loe-table-cell">Cluckingham Palace, Ltd. Run under construction. Flock pending. Circularity node: manure → compost → garden → forage → bees → mead.</div>
+        </div>
+      </div>
+
+      <hr class="rule-line">
+
+      <h2 id="voice">The voice — non-negotiable</h2>
+
+      <p>This is where most people in this space fail. They acquire data and then prescribe. The prescription is where they lose the thread, because a prescription requires that what worked for one person in one context generalizes to another person in another context. It does not. The data does not support this.</p>
+
+      <blockquote>
+        <p>The only honest thing to say is what happened. Not what should happen. Not what will happen. What happened, when, and under what conditions.</p>
+      </blockquote>
+
+      <div class="voice-box">
+        <h3 style="margin-top:0;">The rule in practice</h3>
+        <div class="voice-row">
+          <div class="voice-col never">
+            <h4>Never</h4>
+            <ul>
+              <li>"Here's what you should do."</li>
+              <li>"This works for everyone."</li>
+              <li>"Try this."</li>
+              <li>"The best approach is…"</li>
+            </ul>
+          </div>
+          <div class="voice-col always">
+            <h4>Always</h4>
+            <ul>
+              <li>"Here's what I observed."</li>
+              <li>"Here's what the data showed."</li>
+              <li>"Here's where I got it wrong."</li>
+              <li>"Here's what I changed and why."</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>The distinction matters because the reader is not the author. The author is 47, male, 100% VA disabled, with a specific set of constraints, a specific body, a specific metabolic history. The reader probably isn't. The data is transferable. The prescription is not.</p>
+
+      <hr class="rule-line">
+
+      <h2 id="reader">Who is reading this</h2>
+
+      <p>The primary reader is a veteran 45–60 years old navigating the gap between service identity and what comes after it. The transition question is usually framed professionally — what do I do next? — but the real question is operational: what does my body owe the people who need it, and for how long, and at what standard?</p>
+
+      <p>The secondary reader is anyone exhausted by prescriptive content who wants to see an honest account of a documented practice. The methodology doesn't belong to the military context. It belongs to anyone who has tried to do something rigorously and found that the internet gives them marketing copy instead of field notes.</p>
+
+      <p>If this is you: the data is here. The method is documented. The conclusions are provisional. The practice continues.</p>
+
+      <p style="margin-top: 2.5rem;">
+        <a href="/journeys/" style="font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--field); text-decoration:none;">Read the Journeys →</a>
+      </p>
+
+    </article>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>© 2026 Technique Only, LLC — Marcus Alan Cunningham, Col (Ret), USAF</p>
+      <p>techniqueonly.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>
